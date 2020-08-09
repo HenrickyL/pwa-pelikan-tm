@@ -1,0 +1,19 @@
+{
+  "name": "Pelikan TM",
+  "version": "1.0.0",
+  "description": "Aplicação para monitorar recursos de tradução de um APP",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
+  },
+  "author": "Henricky Lima",
+  "proxy": "http://localhost:3001",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.5",
+    "nunjucks": "^3.2.2"
+  }
+}
