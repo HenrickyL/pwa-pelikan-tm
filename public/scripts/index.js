@@ -1,5 +1,5 @@
 // import dl from "./loadData.js"
-
+console.log("go")
 let btMonitor = null
 let btSearch = null
 let conectStatus = null
