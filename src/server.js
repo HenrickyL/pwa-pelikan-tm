@@ -1,5 +1,5 @@
 import express from "express"
-import pkg from "http-proxy-middleware"
+// import pkg from "http-proxy-middleware"
 const app = express()
 
 //por fora
