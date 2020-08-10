@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended : true }))
 // console.log("dir:"+__dirname)
 //configuração de caminhos
 app.get("/",(req,res)=>{ 
-    return res.render(__dirname+"index.html")//passar pelo motor do nunjucks
+    return res.render("index.html")//passar pelo motor do nunjucks
 })
 
 app.get("/search",(req,res)=>{ 
