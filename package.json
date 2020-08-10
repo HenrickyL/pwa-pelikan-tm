@@ -1,5 +1,5 @@
 {
-  "name": "Pelikan TM",
+  "name": "pelikan-tm",
   "version": "1.0.0",
   "description": "Aplicação para monitorar recursos de tradução de um APP",
   "main": "src/server.js",
@@ -8,7 +8,6 @@
     "start": "nodemon src/server.js"
   },
   "author": "Henricky Lima",
-  "proxy": "http://localhost:3001",
   "license": "ISC",
   "type": "module",
   "dependencies": {
@@ -17,3 +16,4 @@
     "nunjucks": "^3.2.2"
   }
 }
+

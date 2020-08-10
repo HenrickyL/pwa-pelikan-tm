@@ -3,11 +3,12 @@
 let btMonitor = null
 let btSearch = null
 let conectStatus = null
-let data = null
+
+// let data = null
 window.addEventListener("load",()=>{
     loadItems()
     activateButtons()
-    data=doFetch()
+    // data=doFetch()
     // teste()
     
     console.log("<Page Loaded!>")
@@ -26,7 +27,7 @@ async function doFetch(){
         //        headers: myHeaders,
         //        mode: 'cors',
         //        cache: 'default' };
-        const res = await fetch(link/*,myInit*/)
+        const res = await fetch(link)/*,myInit*/
         const json = await res.json()
         console.log("fetched")
         return json
@@ -38,18 +39,18 @@ async function doFetch(){
 
 
 
-function teste(){
-    var xhttp = new XMLHttpRequest();
-    // xhttp.onreadystatechange = ()=>{
-    //     if(this.readState==4 && this.status == 200){
-    //         console.log(this)
-    //     }
-    // }
-    xhttp.open("GET","http://portal.greenmilesoftware.com/get_resources_since",false)
-    xhttp.send(null)
-    xhttp.responseType  = "json"
-    return xhttp.responseText
-}   
+// function teste(){
+//     var xhttp = new XMLHttpRequest();
+//     // xhttp.onreadystatechange = ()=>{
+//     //     if(this.readState==4 && this.status == 200){
+//     //         console.log(this)
+//     //     }
+//     // }
+//     xhttp.open("GET","http://portal.greenmilesoftware.com/get_resources_since",false)
+//     xhttp.send(null)
+//     xhttp.responseType  = "json"
+//     return xhttp.responseText
+// }   
 
 
 

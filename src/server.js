@@ -2,7 +2,10 @@ import express from "express"
 import pkg from "http-proxy-middleware"
 const app = express()
 
+//por fora
+var port = process.env.PORT || 8080
 
+// app.use(express.static(__dirname))
 
 // Conhecimento do NLW
 import nunjucks  from "nunjucks"
@@ -18,11 +21,10 @@ app.use(express.urlencoded({ extended : true }))
 
 
 
-
-
+// console.log("dir:"+__dirname)
 //configuração de caminhos
 app.get("/",(req,res)=>{ 
-    return res.render("index.html")//passar pelo motor do nunjucks
+    return res.render(__dirname+"index.html")//passar pelo motor do nunjucks
 })
 
 app.get("/search",(req,res)=>{ 
@@ -39,15 +41,15 @@ app.all("*",(req,res)=>{
 
 //uso de proxi para tentar corrigir o erro de CORs
 //https://create-react-app.dev/docs/proxying-api-requests-in-development/
-app.use("/api",pkg.createProxyMiddleware({
-    target: 'http://localhost:3001',
-    changeOrigin: true,
-    })
-)
-
+// app.use("/api",pkg.createProxyMiddleware({
+//     target: 'http://localhost:3030',
+//     changeOrigin: true,
+//     })
+// )
 
 
 
 app.listen(3000,()=>{
     console.log("API Start!")
 })
+
