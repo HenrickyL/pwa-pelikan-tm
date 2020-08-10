@@ -3,12 +3,13 @@ console.log("go")
 let btMonitor = null
 let btSearch = null
 let conectStatus = null
+let data = null
 
-// let data = null
 window.addEventListener("load",()=>{
     loadItems()
     activateButtons()
-    // data=doFetch()
+    data=doFetch()
+    console.log("Dados::",data)
     // teste()
     
     console.log("<Page Loaded!>")
@@ -17,11 +18,12 @@ window.addEventListener("load",()=>{
 
 ///////////////////////////
 
-async function doFetch(){
+async function doFetch(){  
     try{
-        let link = "https://api.test.datacite.org/providers/caltech/dois?page[size]=50000"
-        // let link = "http://portal.greenmilesoftware.com/get_resources_since"
+        // let link2 = "https://api.test.datacite.org/providers/caltech/dois?page[size]=10"
         
+        let link = "http://portal.greenmilesoftware.com/get_resources_since"
+
         // var myHeaders = new Headers();
         // var myInit = { method: 'GET',
         //        headers: myHeaders,

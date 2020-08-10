@@ -1,6 +1,6 @@
 {
     "name": "Pelikan Translation Monitor",
-    "short_name": "Pelikan-TM",
+    "short_name": "pelikan-tm",
     "icons": [
         {
             "src": "./img/Pelikan-color.png",

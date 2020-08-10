@@ -15,7 +15,7 @@ nunjucks.configure("src/views",{
 app.use(express.static("public"))
 //habilitar o req.body
 app.use(express.urlencoded({ extended : true }))
-
+// app.usar( bodyParser.json());
 
 
 
