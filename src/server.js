@@ -2,8 +2,6 @@ import express from "express"
 // import pkg from "http-proxy-middleware"
 const app = express()
 
-//por fora
-var port = process.env.PORT || 8080
 
 // app.use(express.static(__dirname))
 
@@ -48,8 +46,13 @@ app.all("*",(req,res)=>{
 // )
 
 
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log('Express server listening on port', port)
+});
 
-app.listen(3000,()=>{
-    console.log("API Start!")
-})
+
+// app.listen(3000,()=>{
+//     console.log("API Start!")
+// })
 
