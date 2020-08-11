@@ -12,7 +12,7 @@ async function fetchData( link=_link,_timeout=5000, _maxTimeout=30000){
         headers: {
              'content-Type':'application/json'
         },
-        mode: 'no-cors',
+        mode: 'cors',
         cache: 'default',
         timeout: _timeout
      }
