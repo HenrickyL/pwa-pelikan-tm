@@ -1,15 +1,13 @@
 
-import dataOp from "./dataOp.js"
+// import dataOp from "../../src/dataOp.js"
 let btMonitor = null
 let btSearch = null
 let conectStatus = null
-let dataSet = null
-let link = "http://portal.greenmilesoftware.com/get_resources_since"
+
 
 window.addEventListener("load",()=>{
     loadItems()
     activateButtons()
-    dataSet = dataOp.fetchData()
     
     console.log("<Page Loaded!>")
 

@@ -1,10 +1,10 @@
 // const fetch = require("../../node_modules/node-fetch/browser")
 // import * as fetch from "../../node_modules/node-fetch/lib/index.mjs"
-// const fetch = require("node-fetch");
-// import * as fs from 'fs'
+import fetch from "node-fetch"
+import * as fs from 'fs'
 let result =null
 fetch.fetch
-let _link = "https://portal.greenmilesoftware.com/get_resources_since"
+let _link = "http://portal.greenmilesoftware.com/get_resources_since"
 
 async function fetchData( link=_link,_timeout=5000, _maxTimeout=30000){
     let init = {
