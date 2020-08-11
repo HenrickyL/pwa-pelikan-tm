@@ -29,11 +29,12 @@ app.use(express.urlencoded({ extended : true }))
 app.get("/",(req,res)=>{ 
     console.log("/")
     dataset = dataOp.fetchData(endpoint,10000)
-    // return res.render("index.html")//passar pelo motor do nunjucks
+    return res.render("index.html",{title: "Heokudo"})//passar pelo motor do nunjucks
 })
 
 
 app.get("/search",(req,res)=>{ 
+    console.log(dataset)
     return res.render("search.html")//passar pelo motor do nunjucks
 })
 
