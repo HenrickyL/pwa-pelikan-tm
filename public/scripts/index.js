@@ -1,60 +1,19 @@
-// import dl from "./loadData.js"
-console.log("go")
+
+import dataOp from "./dataOp.js"
 let btMonitor = null
 let btSearch = null
 let conectStatus = null
-let data = null
+let dataSet = null
+let link = "http://portal.greenmilesoftware.com/get_resources_since"
 
 window.addEventListener("load",()=>{
     loadItems()
     activateButtons()
-    data=doFetch()
-    console.log("Dados::",data)
-    // teste()
+    dataSet = dataOp.fetchData()
     
     console.log("<Page Loaded!>")
 
 })
-
-///////////////////////////
-
-async function doFetch(){  
-    try{
-        // let link2 = "https://api.test.datacite.org/providers/caltech/dois?page[size]=10"
-        
-        let link = "http://portal.greenmilesoftware.com/get_resources_since"
-
-        // var myHeaders = new Headers();
-        // var myInit = { method: 'GET',
-        //        headers: myHeaders,
-        //        mode: 'cors',
-        //        cache: 'default' };
-        const res = await fetch(link)/*,myInit*/
-        const json = await res.json()
-        console.log("fetched")
-        return json
-    }catch(err){
-        console.log(err)
-    }
-    
-}
-
-
-
-// function teste(){
-//     var xhttp = new XMLHttpRequest();
-//     // xhttp.onreadystatechange = ()=>{
-//     //     if(this.readState==4 && this.status == 200){
-//     //         console.log(this)
-//     //     }
-//     // }
-//     xhttp.open("GET","http://portal.greenmilesoftware.com/get_resources_since",false)
-//     xhttp.send(null)
-//     xhttp.responseType  = "json"
-//     return xhttp.responseText
-// }   
-
-
 
 
 

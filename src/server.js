@@ -1,7 +1,7 @@
 import express from "express"
 // import pkg from "http-proxy-middleware"
 const app = express()
-
+import * as fs from 'fs'
 
 // app.use(express.static(__dirname))
 
@@ -14,16 +14,24 @@ nunjucks.configure("src/views",{
 //configurar pasta "public"
 app.use(express.static("public"))
 //habilitar o req.body
+app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
-// app.usar( bodyParser.json());
 
 
+
+// import {appRouter} from './routes/routes.js'
+// // const routes = require("./routes/routes.js")(app, fs);
+// appRouter(app, fs)
+
+
+let sendVar={nome:"henricky", lastname:"lima", age:23, text: "Esta variável foi mandada via express"}
 
 // console.log("dir:"+__dirname)
 //configuração de caminhos
 app.get("/",(req,res)=>{ 
-    return res.render("index.html")//passar pelo motor do nunjucks
+    return res.render("index.html", {myVar:sendVar})//passar pelo motor do nunjucks
 })
+
 
 app.get("/search",(req,res)=>{ 
     return res.render("search.html")//passar pelo motor do nunjucks
@@ -37,13 +45,6 @@ app.all("*",(req,res)=>{
     return res.render("notFound.html")
 })
 
-//uso de proxi para tentar corrigir o erro de CORs
-//https://create-react-app.dev/docs/proxying-api-requests-in-development/
-// app.use("/api",pkg.createProxyMiddleware({
-//     target: 'http://localhost:3030',
-//     changeOrigin: true,
-//     })
-// )
 
 
 const port = process.env.PORT || 3000;
@@ -51,8 +52,4 @@ app.listen(port, () => {
   console.log('Express server listening on port', port)
 });
 
-
-// app.listen(3000,()=>{
-//     console.log("API Start!")
-// })
 
