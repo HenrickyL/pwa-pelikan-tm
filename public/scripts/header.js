@@ -1,10 +1,13 @@
 let btReturn = null
 let btOptions = null
-
+let btBack = null
+let btNext  = null
 
 export function loadButons(){
     btReturn = document.querySelector(".bt-return")
     btOptions = document.querySelector(".bt-options")
+    // btBack =document.querySelector(".bt-back")
+    // btNext =document.querySelector(".bt-next")
     console.log("Loaded buttons!")
 }
 export function activateButtons(){
@@ -16,6 +19,10 @@ export function activateButtons(){
         console.log("Options Clicked")
     })
     console.log("activated buttons")
+
+
+
+
 }
 
 const header = {loadButons,activateButtons}

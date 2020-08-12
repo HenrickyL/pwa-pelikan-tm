@@ -1,5 +1,7 @@
 import express from "express"
-import dataOp from './dataOp.js'
+import dataOp from './helpers/dataOp.js'
+import  {getNewTimestamp as Tm} from './helpers/timestamp.js'
+import  {searchByValue} from './helpers/funtionality.js'
 // import * as fs from 'fs'
 let dataset = null
 let endpoint = "http://portal.greenmilesoftware.com/get_resources_since"
@@ -16,6 +18,12 @@ nunjucks.configure("src/views",{
     express: app,
     noCache:true
 })
+//permitir o uso de funções no nunjuncks
+var env = nunjucks.configure();
+env.addGlobal('Tm',Tm);
+env.addGlobal('parseInt',parseInt);
+env.addGlobal("searchByValue",searchByValue)
+
 
 
 //configurar pasta "public"
@@ -33,17 +41,29 @@ app.get("/",(req,res,next)=>{
 },)
 
 
-app.get("/search/:value?",(req,res)=>{ 
+app.get("/search=:id?/:value?",(req,res)=>{ 
     let i = Number(req.params.value)
+    let id = String(req.params.id).trim().toLowerCase()
     if(dataset === null){
         dataOp.fetchData(endpoint,25000).then((result)=>{
             dataset = result
             console.log("l:",result.length," page:",i)
-            return res.render("search.html",{translations: result.slice(i,i+10)})//passar pelo motor do nunjucks
+            //search
+            if(id!='undefined'){
+                result = searchByValue(result,id)
+            }
+            let variables= {
+                translations: result.slice(i,i+20),
+                Tm:Tm,
+                parseInt:parseInt,
+                allResult:result,
+                index: i, div: 20
+            }
+            return res.render("search.html",variables)//passar pelo motor do nunjucks
         }).catch((err)=>console.log(">>"+err))
     }else{
         console.log()
-        return res.render("monitor.html",{translations: dataset.slice(i,i+10)})
+        return res.render("monitor.html",{translations: dataset.slice(i,i+20)})
     }
     
 })
@@ -55,11 +75,11 @@ app.get("/monitor/:value?",(req,res)=>{
         dataOp.fetchData(endpoint,25000).then((result)=>{
             dataset = result
             console.log("l:",result.length," page:",i)
-            return res.render("monitor.html",{translations: result.slice(i,i+10)})//passar pelo motor do nunjucks
+            return res.render("monitor.html",{translations: result.slice(i,i+20), allTranslations:result})//passar pelo motor do nunjucks
         }).catch((err)=>console.log(">>"+err))
     }else{
         console.log()
-        return res.render("monitor.html",{translations: dataset.slice(i,i+10)})
+        return res.render("monitor.html",{translations: dataset.slice(i,i+20)})
     }
 })
 

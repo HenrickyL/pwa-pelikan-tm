@@ -226,15 +226,27 @@ button.bt-options{
     color: white;
 }
 .list-translations .title-list span.qtd{
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
     margin-right: 3vw;
+    
 }
 
 .list-translations .title-list h2,h3,span,label{
     font-size: 0.8em;
 }
+.list-translations .title-list h2{
+    font-size: 0.9em;
+}
 
+.list-translations .translation,.title-translation{
+    width: 85vw;
+}
 .list-translations .translation{
-    /* border: 1px solid #808080cc; */
+    
+    display: flex;
+    flex-direction: column;
     margin: 2vh 0 3vw 3vw ;
     background-color: var(--color-background2);
     padding-bottom:1vh ;
@@ -249,16 +261,43 @@ button.bt-options{
     background-color: var(--color-base-light);
     margin-bottom: 10px;
 }
+.list-translations .translation .title-translation h3{
+    max-width: 40vw ;
+    display:block;
+    word-wrap:break-word;
+}
+
 .list-translations .translation .title-translation span.update{
+    
     color: #707070;
     padding-right: 2vw;
 }
 .list-translations .translation span:not(.update){
-    margin: 3vh 4vw ;
+    /* padding: 1vh 4vw ; */
     color: red;
+    margin-left: 5px;
+    text-align: center;
 }
 .list-translations .translation:hover{
     background-image: linear-gradient(var(--color-pri-light),white);
     font-weight: bold;
     box-shadow: 1px 1px 5px gray;
+}
+
+/* botões  de paginas*/
+.list-translations .position{
+    position: relative;
+    display: block;
+   
+}
+.list-translations .position #elements{
+    position: absolute;
+    right: 0;
+}
+.list-translations .position button{
+    /* background-color: var(-); */
+    margin-left: 5px;
+}
+.list-translations .position button:hover{
+    background-color: var(--color-pri-light);
 }

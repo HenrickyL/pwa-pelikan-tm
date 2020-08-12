@@ -25,28 +25,53 @@
         </div>
     </header>
     <main class="search-views">
-       
+
         <div class="monitor-box">
             <label for="">Pesquisar conteúdo:</label>
             <input type="text">
         </div>
-        <details class="list-translations">
+        <details class="list-translations" open>
             <div class="ajuste"></div>
             <summary class="title-list">
-                <h2>Traduções Encontradas:</h2><span class="qtd">Qtd:{{translations.length}}</span>
+                <h2>Traduções Encontradas:</h2><span class="qtd">{{allResult.length}}</span>
             </summary>
             
             {% for t in translations %}
             <div class="translation">
                 <div class="title-translation" >
-                    <h3>{{t.resource.resource_id}}</h3><span class="update">{{t.resource.updated_at}}</span>
+                    <h3>{{t.resource.resource_id}}</h3><span class="update">{{Tm(t.resource.updated_at)}}</span>
                 </div>
-                <span>{{t.resource.value}}</span>
+                <span class="t-value">{{t.resource.value}}</span>
             </div>
             {% endfor %}
-
+            <div class="position">
+                <div id="elements">
+                    <span><b>{{parseInt(index/div)+1}}</b> de <b>{{parseInt(allResult.length/div)}}</b></span>
+                    <button class="bt-back" value=0><</button>
+                    <button class="bt-next" value=0 >></button>
+                </div>
+                
+            </div>
         </details>
 
+        <script>
+            
+            let input = document.querySelector("input")
+            input.addEventListener("keyup",(event)=>{
+                if(event.key === "Enter"){
+                    window.location = "/search="+event.target.value+"/0"
+                }
+            })
+            document.querySelector(".bt-back").addEventListener("click",()=>{
+                window.location = "/search=/"+{{index}}
+            })
+
+            document.querySelector(".bt-next")addEventListener("click",()=>{
+                window.location = "/search/"
+            })
+
+           
+        </script>
         <script type="module" src="/scripts/search.js"></script>
     </main>
 </body>

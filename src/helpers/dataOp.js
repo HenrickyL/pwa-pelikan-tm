@@ -14,7 +14,7 @@ async function fetchData( link=_link,_timeout=10000, _maxTimeout=30000){
                  'content-Type':'application/json'
             },
             mode: 'no-cors',
-            cache: 'default', //"default", "no-store", "reload", "no-cache", "force-cache", or "only-if-cached"
+            cache: 'no-store', //"default", "no-store", "reload", "no-cache", "force-cache", or "only-if-cached"
             timeout: _timeout
          }
         const res = await fetch(link, init)

@@ -25,10 +25,10 @@ function loadItems(){
 }
 function activateButtons(){
     btMonitor.addEventListener("click",()=>{
-        window.location = "/monitor"
+        window.location = "/monitor/0"
     })
     btSearch.addEventListener("click",()=>{
-        window.location = "/search"
+        window.location = "/search=/0"
     })
     setInterval(()=>{
         if(navigator.onLine){

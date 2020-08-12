@@ -37,10 +37,10 @@
             </div>
     
         </header>
-        <details class="list-translations">
+        <details class="list-translations" open>
             <div class="ajuste"></div>
             <summary class="title-list" alt="Lista de traduções">
-                <h2>Traduções:</h2><span class="qtd">Qtd:</span>
+                <h2>Traduções:</h2><span class="qtd">Total: {{translations.length}}</span>
             </summary>
             
             {% for t in translations %}
@@ -53,7 +53,10 @@
             {% endfor %}
         </details>
         
+        <script>
+            
 
+        </script>
         <script type="module" src="/scripts/monitor.js"></script>
     </main>
 </body>
