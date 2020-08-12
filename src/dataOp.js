@@ -19,7 +19,7 @@ async function fetchData( link=_link,_timeout=10000, _maxTimeout=30000){
          }
         const res = await fetch(link, init)
         const  json  =  await res.json()
-        await fs.writeFileSync(title+'.json',JSON.stringify(json[0]))
+        // await fs.writeFileSync(title+'.json',JSON.stringify(json[0]))
         return json
     }catch(err){
         console.log(err)

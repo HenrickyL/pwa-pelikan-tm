@@ -33,59 +33,17 @@
         <details class="list-translations">
             <div class="ajuste"></div>
             <summary class="title-list">
-                <h2>Traduções Encontradas:</h2><span class="qtd">Qtd:</span>
+                <h2>Traduções Encontradas:</h2><span class="qtd">Qtd:{{translations.length}}</span>
             </summary>
             
+            {% for t in translations %}
             <div class="translation">
-                <div class="title-translation">
-                    <h3>resource_id</h3><span class="update">update</span>
+                <div class="title-translation" >
+                    <h3>{{t.resource.resource_id}}</h3><span class="update">{{t.resource.updated_at}}</span>
                 </div>
-                <span>Valor</span>
+                <span>{{t.resource.value}}</span>
             </div>
-<!--  -->
-            <div class="translation">
-                <div class="title-translation">
-                    <h3>resource_id</h3><span class="update">update</span>
-                </div>
-                <span>Valor</span>
-            </div>
-            <div class="translation">
-                <div class="title-translation">
-                    <h3>resource_id</h3><span class="update">update</span>
-                </div>
-                <span>Valor</span>
-            </div>
-            <div class="translation">
-                <div class="title-translation">
-                    <h3>resource_id</h3><span class="update">update</span>
-                </div>
-                <span>Valor</span>
-            </div>
-            <div class="translation">
-                <div class="title-translation">
-                    <h3>resource_id</h3><span class="update">update</span>
-                </div>
-                <span>Valor</span>
-            </div>
-            <div class="translation">
-                <div class="title-translation">
-                    <h3>resource_id</h3><span class="update">update</span>
-                </div>
-                <span>Valor</span>
-            </div>
-            <div class="translation">
-                <div class="title-translation">
-                    <h3>resource_id</h3><span class="update">update</span>
-                </div>
-                <span>Valor</span>
-            </div>
-            <div class="translation">
-                <div class="title-translation">
-                    <h3>resource_id</h3><span class="update">update</span>
-                </div>
-                <span>Valor</span>
-            </div>
-<!--  -->
+            {% endfor %}
 
         </details>
 
