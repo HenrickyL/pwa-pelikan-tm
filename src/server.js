@@ -43,27 +43,40 @@ app.get("/",(req,res,next)=>{
 
 app.get("/search=:id?/:value?",(req,res)=>{ 
     let i = Number(req.params.value)
-    let id = String(req.params.id).trim().toLowerCase()
+    let id = String(req.params.id)
+    
+    
     if(dataset === null){
         dataOp.fetchData(endpoint,25000).then((result)=>{
-            dataset = result
-            console.log("l:",result.length," page:",i)
+            dataset = result    
             //search
             if(id!='undefined'){
-                result = searchByValue(result,id)
-            }
+                // result = searchByValue(result,id)
+                console.log("busca")
+            } id = ''
             let variables= {
-                translations: result.slice(i,i+20),
                 Tm:Tm,
+                search:id,
                 parseInt:parseInt,
                 allResult:result,
-                index: i, div: 20
+                index: i, div: 20,
+                translations: result.slice(i,i+20),
             }
+            
             return res.render("search.html",variables)//passar pelo motor do nunjucks
         }).catch((err)=>console.log(">>"+err))
     }else{
-        console.log()
-        return res.render("monitor.html",{translations: dataset.slice(i,i+20)})
+        let variables= {
+            Tm:Tm,
+            search:id,
+            parseInt:parseInt,
+            allResult:dataset,
+            index: i, div: 20,
+            translations: dataset.slice(i,i+20),
+        }
+
+
+        return res.render("search.html",variables)
     }
     
 })
