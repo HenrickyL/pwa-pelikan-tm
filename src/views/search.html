@@ -55,25 +55,25 @@
         </details>
 
         <script>
-            
             let input = document.querySelector("input")
             input.addEventListener("keyup",(event)=>{
                 if(event.key === "Enter"){
                     window.location = "/search="+event.target.value+"/0"
                 }
+                console.log("input Loaded!")
             })
             document.querySelector(".bt-back").addEventListener("click",()=>{
                 if( {{  parseInt(index/div)+1  > 1}})
-                    window.location = "/search="+{{search}}+"/"+{{index-div}}
+                    window.location = "/search="+{{search}}+"/"+{{index - div}}
+                console.log("back Loaded!")
             })
 
             document.querySelector(".bt-next").addEventListener("click",()=>{
                 console.log("click")
                 if( {{  parseInt(index/div)+1  < parseInt(allResult.length/div)}})
-                    window.location = "/search="+{{search}}+"/"+{{index+div}}
+                    window.location = "/search="+{{search}}+"/"+{{index + div}}
+                console.log("next Loaded!")
             })
-
-           
         </script>
         <script type="module" src="/scripts/search.js"></script>
     </main>

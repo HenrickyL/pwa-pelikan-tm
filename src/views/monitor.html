@@ -24,7 +24,7 @@
     <main id="page-monitor-views">
         <header class="monitor-box">
             <div id="statistics">
-                <span>Resultados:</span>
+                <span>Resultados {{allResult.length}}</span>
             </div>
             <div class="filter-options" alt="filto">
                 <label for="filter">Filtrar por:</label>
@@ -40,22 +40,38 @@
         <details class="list-translations" open>
             <div class="ajuste"></div>
             <summary class="title-list" alt="Lista de traduções">
-                <h2>Traduções:</h2><span class="qtd">Total: {{translations.length}}</span>
+                <h2>Traduções:</h2><span class="qtd"><b>Total:</b> {{translations.length}}</span>
             </summary>
             
             {% for t in translations %}
             <div class="translation">
                 <div class="title-translation" >
-                    <h3>{{t.resource.resource_id}}</h3><span class="update">{{t.resource.updated_at}}</span>
+                    <h3>{{t.resource.resource_id}}</h3><span class="update">{{Tm(t.resource.updated_at)}}</span>
                 </div>
-                <span>{{t.resource.value}}</span>
+                <span class="t-value">{{t.resource.value}}</span>
             </div>
             {% endfor %}
+            <div class="position">
+                <div id="elements">
+                    <span><b>{{parseInt(index/div)+1}}</b> de <b>{{parseInt(allResult.length/div)}}</b></span>
+                    <button class="bt-back" value=0><</button>
+                    <button class="bt-next" value=0 >></button>
+                </div>
+                
+            </div>
         </details>
         
         <script>
-            
+            document.querySelector(".bt-back").addEventListener("click",()=>{
+                if( {{  parseInt(index/div)+1  > 1}})
+                    window.location = "/search="+{{search}}+"/"+{{index-div}}
+            })
 
+            document.querySelector(".bt-next").addEventListener("click",()=>{
+                console.log("click")
+                if( {{  parseInt(index/div)+1  < parseInt(allResult.length/div)}})
+                    window.location = "/search="+{{search}}+"/"+{{index+div}}
+            })
         </script>
         <script type="module" src="/scripts/monitor.js"></script>
     </main>

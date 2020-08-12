@@ -51,7 +51,7 @@ app.get("/search=:id?/:value?",(req,res)=>{
             dataset = result    
             //search
             if(id!='undefined'){
-                // result = searchByValue(result,id)
+                result = searchByValue(result,id)
                 console.log("busca")
             } id = ''
             let variables= {
@@ -66,13 +66,17 @@ app.get("/search=:id?/:value?",(req,res)=>{
             return res.render("search.html",variables)//passar pelo motor do nunjucks
         }).catch((err)=>console.log(">>"+err))
     }else{
+        if(id!='undefined'){
+            dataset = searchByValue(dataset,id)
+            console.log("busca")
+        } id = ''
         let variables= {
             Tm:Tm,
             search:id,
             parseInt:parseInt,
             allResult:dataset,
             index: i, div: 20,
-            translations: dataset.slice(i,i+20),
+            translations: dataset.slice(i,i+20)
         }
 
 
@@ -82,17 +86,41 @@ app.get("/search=:id?/:value?",(req,res)=>{
 })
 
 
-app.get("/monitor/:value?",(req,res)=>{
+app.get("/monitor/filter=:id?/:value?",(req,res)=>{
     let i = Number(req.params.value)
+    let id = String(req.params.id)
+    
+    
     if(dataset === null){
         dataOp.fetchData(endpoint,25000).then((result)=>{
-            dataset = result
-            console.log("l:",result.length," page:",i)
-            return res.render("monitor.html",{translations: result.slice(i,i+20), allTranslations:result})//passar pelo motor do nunjucks
+            dataset = result    
+            //search
+            if(id!='undefined'){
+                console.log("filtro")
+            } id = ''
+            let variables= {
+                Tm:Tm,
+                search:id,
+                parseInt:parseInt,
+                allResult:result,
+                index: i, div: 20,
+                translations: result.slice(i,i+20),
+            }
+            
+            return res.render("monitor.html",variables)//passar pelo motor do nunjucks
         }).catch((err)=>console.log(">>"+err))
     }else{
-        console.log()
-        return res.render("monitor.html",{translations: dataset.slice(i,i+20)})
+        let variables= {
+            Tm:Tm,
+            search:id,
+            parseInt:parseInt,
+            allResult:dataset,
+            index: i, div: 20,
+            translations: dataset.slice(i,i+20)
+        }
+
+
+        return res.render("monitor.html",variables)
     }
 })
 
