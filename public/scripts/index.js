@@ -25,7 +25,7 @@ function loadItems(){
 }
 function activateButtons(){
     btMonitor.addEventListener("click",()=>{
-        window.location = "/monitor/0"
+        window.location = "/monitor/filter=language/0"
     })
     btSearch.addEventListener("click",()=>{
         window.location = "/search=/0"

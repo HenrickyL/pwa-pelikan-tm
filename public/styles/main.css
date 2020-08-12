@@ -206,7 +206,7 @@ button.bt-options{
     max-height: 400px; 
 }
 .list-translations .ajuste{
-    margin-bottom:6vh ;
+    margin-bottom:7vh ;
 }
 
 .list-translations .title-list{
@@ -222,9 +222,6 @@ button.bt-options{
     background-color: var(--color-base);
 }
 
-.list-translations .title-list h2{
-    color: white;
-}
 .list-translations .title-list span.qtd{
     display: flex;
     flex-direction: column;
@@ -237,7 +234,8 @@ button.bt-options{
     font-size: 0.8em;
 }
 .list-translations .title-list h2{
-    font-size: 0.9em;
+    color: white;
+    font-size: 1em;
 }
 
 .list-translations .translation,.title-translation{
@@ -288,6 +286,7 @@ button.bt-options{
 .list-translations .position{
     position: relative;
     display: block;
+
    
 }
 .list-translations .position #elements{

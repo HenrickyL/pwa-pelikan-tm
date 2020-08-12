@@ -38,6 +38,7 @@ app.use(express.urlencoded({ extended : true }))
 //configuração de caminhos
 app.get("/",(req,res,next)=>{ 
     return res.render("index.html")//passar pelo motor do nunjucks
+    console.log("*")
 },)
 
 

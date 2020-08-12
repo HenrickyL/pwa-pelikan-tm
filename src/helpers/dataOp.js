@@ -24,7 +24,7 @@ async function fetchData( link=_link,_timeout=10000, _maxTimeout=30000){
     }catch(err){
         console.log(err)
         // if(_timeout <= _maxTimeout)
-            // fetchData(link,parseInt(_timeout*1.5),_maxTimeout)
+            fetchData(link,parseInt(_timeout*1.5),_maxTimeout)
     }
 }
 
