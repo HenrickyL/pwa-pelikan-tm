@@ -5,7 +5,7 @@ let dataset = null
 let endpoint = "http://portal.greenmilesoftware.com/get_resources_since"
 
 const app = express()
-
+let v = []
 
 
 // Conhecimento do NLW
@@ -27,23 +27,27 @@ app.use(express.urlencoded({ extended : true }))
 
 //configuração de caminhos
 app.get("/",(req,res)=>{ 
-    console.log("/")
-    dataset = dataOp.fetchData(endpoint,10000)
-    return res.render("index.html",{title: "Heokudo"})//passar pelo motor do nunjucks
+    v.push(1)
+    // dataOp.fetchData(endpoint,25000).then(res=>{
+    //     dataset = res;
+    //     dataOp.saveData(res) 
+    // }).catch((err)=>console.log(">>"+err))
+    return res.render("index.html")//passar pelo motor do nunjucks
 })
 
 
 app.get("/search",(req,res)=>{ 
-    console.log(dataset)
+    v.push(1)
     return res.render("search.html")//passar pelo motor do nunjucks
 })
 
 app.get("/monitor",(req,res)=>{
-
-    return res.render("monitor.html")//passar pelo motor do nunjucks
+    console.log(v.length)
+    return res.render("monitor.html",{translations: dataset})//passar pelo motor do nunjucks
 })
 
 app.all("*",(req,res)=>{
+    v.push(1)
     return res.render("notFound.html")
 })
 

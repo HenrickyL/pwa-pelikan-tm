@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
 }
 #app-home img#main-logo{
     width: 60vw;
@@ -23,9 +24,6 @@
     padding: 5vh 0;
 }
 
-body{
-    height: 100vh;
-}
 
 #app-home-views h1,h3{
     color: var(--color-primary);
@@ -54,7 +52,7 @@ body{
 
 #app-home #conectivity{
     position: absolute;
-    left:   80vw;
+    left:  80vw;
     top: 5vh;
     display: block;
     /* width: 100%; */
