@@ -1,7 +1,7 @@
 {
     "name": "Pelikan Translation Monitor",
     "short_name": "pelikan tm",
-    "description": "Aplicação para monitorar recursos de tradução de um APP.",
+    "description":  "Aplicação para monitorar recursos de tradução de um APP.",
     "scope": "/",
     "display": "standalone",
     "orientation": "any",
@@ -11,6 +11,7 @@
     "lang": "Portuguese",
     "icons": [
         {
+        
             "src": "./img/Pelikan-color.png",
             "sizes": "144x144",
             "type": "image/pgn"
