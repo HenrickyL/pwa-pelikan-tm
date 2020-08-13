@@ -3,6 +3,7 @@
 let btMonitor = null
 let btSearch = null
 let conectStatus = null
+let bgLoad = null
 
 
 window.addEventListener("load",()=>{
@@ -21,13 +22,19 @@ function loadItems(){
     btMonitor = document.querySelector(".button-main")
     btSearch = document.querySelector(".button-sec")
     conectStatus = document.querySelector("#conectivity")
+    bgLoad = document.querySelector(".bg")
     console.log("Loaded buttons!")
 }
 function activateButtons(){
+
     btMonitor.addEventListener("click",()=>{
+        bgLoad.classList.remove("hide")
         window.location = "/monitor/filter=language/0"
+        
     })
     btSearch.addEventListener("click",()=>{
+        bgLoad.classList.remove("hide")
+
         window.location = "/search=/0"
     })
     setInterval(()=>{
