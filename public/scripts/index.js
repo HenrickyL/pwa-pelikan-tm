@@ -22,14 +22,16 @@ function loadItems(){
     btMonitor = document.querySelector(".button-main")
     btSearch = document.querySelector(".button-sec")
     conectStatus = document.querySelector("#conectivity")
-    bgLoad = document.querySelector(".bg")
+    bgLoad = document.getElementById("bg")
+    // console.log(bgLoad)
     console.log("Loaded buttons!")
 }
 function activateButtons(){
 
     btMonitor.addEventListener("click",()=>{
+        // console.log(bgLoad)
         setTimeout(()=>{
-            window.location = "/monitor/filter=language/0"
+            window.location = "/monitor/filter=language_id/0"
         },1000)
         bgLoad.classList.remove("hide")
         
