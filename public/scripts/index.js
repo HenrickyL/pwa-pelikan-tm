@@ -9,7 +9,7 @@ let bgLoad = null
 window.addEventListener("load",()=>{
     loadItems()
     activateButtons()
-    
+    registerSW()
     console.log("<Page Loaded!>")
 
 })
@@ -58,4 +58,16 @@ function activateButtons(){
         // console.log("cheked!")
     }, 2000)
     console.log("activated buttons")
+}
+
+
+
+async function registerSW(){
+    if('serviceWorker' in navigator){
+        try{
+            await navigator.serviceWorker.register("./sw.js")
+        }catch(e){
+            console.log("SW registration failed")
+        }
+    }
 }
