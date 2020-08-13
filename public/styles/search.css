@@ -57,3 +57,9 @@ button.bt-return:hover, .bt-options:hover{
 .list-translations .translation:hover .title-translation{
     background-color: var(--color-primary);
 }
+button.bt-back,button.bt-next{
+    background-color: var(--color-base-light);
+}
+button.bt-back:hover,button.bt-next:hover{
+    background-color: var(--color-base);
+}

@@ -21,7 +21,7 @@ export function activateButtons(){
     /////////////////////////////////////
     let url = window.location.href
     let aux = url.split('/')
-    let page = Number(aux[aux.length-1])
+    let page = /*  */(aux[aux.length-1])
     btBack.addEventListener("click",()=>{
         if( (page-20) >= 0 )
             window.location = url.slice(0,url.length-String(page).length)+(page-20)

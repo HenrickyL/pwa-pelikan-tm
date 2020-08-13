@@ -25,6 +25,13 @@ body{
     background-color: var(--color-background);
     /* width: 100vw; */
 }
+.hide {
+    display: none;
+}
+
+.opaca{
+    opacity: 0;
+}
 
 body,
 input,
@@ -141,7 +148,31 @@ button.bt-return:hover, .bt-options:hover{
 }
 button.bt-options{
     background-color: transparent;
+    opacity: 0;
 
+}
+button.bt-back,button.bt-next{
+    background-color: var(--color-pri-light);
+}
+button.bt-back:hover,button.bt-next:hover{
+    background-color: var(--color-primary);
+}
+button.bt-category-next{
+    position: relative;
+    right: 10vw;
+    background-image: url("/img/next.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2em;
+    width: 30px;
+    height: 30px;
+    /* background-color: var(--color-primary); */
+    padding: 1px;
+    transition: 200ms;
+}
+button.bt-category-next:active{
+    box-shadow: 2px 2px 5px black;
+    transform: translateY(4px);
 }
 
 
@@ -188,8 +219,26 @@ button.bt-options{
 }
 
 
+.bg{
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: #000000cc;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size:20px;
+    align-items: center;
+    text-align: center;
+    margin:auto;
+}
 
 
+#statistics{
+    display: flex;
+    flex-direction: column;
+}
 
 
 
@@ -206,8 +255,8 @@ button.bt-options{
     overflow: scroll;
     background-color: white;
     /* overflow-anchor: auto; */
-    max-height: 400px;
-    min-height: 100px;
+    max-height: 440px;
+    /* min-height: 100px; */
 }
 .list-translations .ajuste{
     margin-bottom:7vh ;
@@ -229,7 +278,7 @@ button.bt-options{
 .list-translations .title-list span.qtd{
     display: flex;
     flex-direction: column;
-    font-weight: bold;
+    /* font-weight: bold; */
     margin-right: 3vw;
     
 }
@@ -240,6 +289,7 @@ button.bt-options{
 .list-translations .title-list h2{
     color: white;
     font-size: 1em;
+    margin:auto;
 }
 
 .list-translations .translation,.title-translation{
@@ -251,7 +301,6 @@ button.bt-options{
     flex-direction: column;
     margin: 2vh 0 3vw 3vw ;
     background-color: var(--color-background2);
-    padding-bottom:1vh ;
     border-radius: 5px 0 0 8px;
 
 }
@@ -262,6 +311,8 @@ button.bt-options{
     justify-content: space-between;
     background-color: var(--color-base-light);
     margin-bottom: 10px;
+    padding:0.5vh 2vw ;
+
 }
 .list-translations .translation .title-translation h3{
     max-width: 40vw ;
@@ -270,10 +321,10 @@ button.bt-options{
 }
 
 .list-translations .translation .title-translation span.update{
-    
     color: #707070;
     padding-right: 2vw;
 }
+
 .list-translations .translation span:not(.update){
     /* padding: 1vh 4vw ; */
     color: red;
@@ -288,25 +339,23 @@ button.bt-options{
 .list-translations .translation:hover .title-translation{
     background-color: var(--color-base);
 } 
+.list-translations .translation:hover span.update{
+    color:white;
+}
 
 /* botões  de paginas*/
-.list-translations .position{
+ .position{
     position: relative;
-    display: block;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 
    
 }
-.list-translations .position #elements{
-    position: absolute;
-    right: 0;
-}
-.list-translations .position button{
-    /* background-color: var(-); */
-    margin-left: 5px;
-}
-.list-translations .position button:hover{
-    background-color: var(--color-pri-light);
-}
+
+
 
 
 /* //////////////////// */
@@ -348,7 +397,7 @@ button.bt-search:active{
 .card-lang{
     opacity: 0.6;
     position: relative;
-    left: 48%;
+    left: 47%;
     /* top: 55%; */
     z-index: 2;
     border-radius: 8px;
@@ -365,4 +414,9 @@ button.bt-search:active{
     text-align: center;
     align-items: center;   
     box-shadow: 0px -5px 0px yellow;
+    transition: 200ms;
+}
+
+.card-lang:hover:active{
+    opacity: 0;
 }

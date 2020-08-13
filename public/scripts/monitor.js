@@ -6,6 +6,7 @@ window.addEventListener("load",()=>{
     header.activateButtons()
     
     
+    
     console.log("<Page Loaded!>")
 
 })

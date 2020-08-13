@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/img/Pelikan-color.png">
+    <link rel="stylesheet" href="/styles/animations.css">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/monitor.css">
     <link rel="stylesheet" href="/styles/responsive.css">
@@ -25,14 +26,25 @@
         <header class="monitor-box">
             <div id="statistics">
                 <span><b>Resultados:</b> {{allResult.length}}</span>
+                <span><b>Categorias:</b> {{categorys.length}}</span>
             </div>
             <div class="filter-options" alt="filto">
                 <label for="filter"><b>Filtrar por:</b></label>
-                <select name="filter" id="filter" alt="Filtro">
+                {% if search == "language_id" %}
+                    <select name="filter" id="filter" alt="Filtro"  onchange="filtered()">
                     <!-- <optgroup label="Filtos"></optgroup> -->
-                        <option value="language">Linguagens</option>
-                        <option value="module">Módulos</option>
-                </select>
+                        <option value="language_id" selected>Linguagens</option>
+                        <option value="module_id">Módulos</option>
+                    </select>
+                {% else %}
+                    <select name="filter" id="filter" alt="Filtro"  onchange="filtered()">
+                    <!-- <optgroup label="Filtos"></optgroup> -->
+                        <option value="language_id" >Linguagens</option>
+                        <option value="module_id" selected>Módulos</option>
+                    </select>
+
+                {% endif %}
+                
                 
             </div>
     
@@ -40,7 +52,7 @@
         <details class="list-translations" open>
             <div class="ajuste"></div>
             <summary class="title-list" alt="Lista de traduções">
-                <h2>Traduções:</h2><span class="qtd"><b>Total:</b> {{translations.length}}</span>
+                <h2>Traduções:</h2>
             </summary>
             
             {% for t in translations %}
@@ -49,31 +61,73 @@
                     <h3>{{t.resource.resource_id}}</h3><span class="update">{{Tm(t.resource.updated_at)}}</span>
                 </div>
                 <span class="t-value">{{t.resource.value}}</span>
+                <div class="card-lang">{{t.resource.language_id}}</div>
             </div>
             {% endfor %}
-            <div class="position">
+            
+        </details>
+        <div class="position">
+                <div class='opaca'>.</div>
                 <div id="elements">
                     <span><b>{{parseInt(index/div)+1}}</b> de <b>{{parseInt(allResult.length/div)}}</b></span>
                     <button class="bt-back" value=0><</button>
                     <button class="bt-next" value=0 >></button>
                 </div>
-                
-            </div>
-        </details>
-        
-        <script>
-            document.querySelector(".bt-back").addEventListener("click",()=>{
-                if( {{  parseInt(index/div)+1  > 1}})
-                    window.location = "/search="+{{search}}+"/"+{{index-div}}
-            })
+                <button class="bt-category-next opaca"></button>
+        </div>
 
-            document.querySelector(".bt-next").addEventListener("click",()=>{
-                console.log("click")
-                if( {{  parseInt(index/div)+1  < parseInt(allResult.length/div)}})
-                    window.location = "/search="+{{search}}+"/"+{{index+div}}
-            })
-        </script>
-        <script type="module" src="/scripts/monitor.js"></script>
     </main>
+        <div class="bg">
+            <div class="loader"></div>
+            Loading Data...
+        </div>
+
+
+
+        <script>
+            function doFind(name,objs,idName=null){ //retorna bool ou index
+                let found = []
+                let index =0
+
+                if(idName!==null){
+                    found = objs.find(obj => {
+                        index++
+                        return obj.resource[idName] === name
+                        })
+                    return index
+                }else{
+                    found = objs.find(obj => {
+                    return obj === name
+                    })
+                    return found
+                }
+            }
+        </script>
+
+        <script>
+            function filtered(){
+             var x = document.getElementById("filter")
+             window.location = "/monitor/filter="+x.value+"/0"
+            }
+            setTimeout(()=>{
+                let x = document.querySelector(".bg")
+                x.classList.add("hide")
+            },1000)
+
+            // let nextCategory = document.querySelector(".bt-category-next")
+            //nextCategory.addEventListener("click",()=>{
+            //    console.log("cliked")
+            //    let x = document.getElementById("filter").value
+            //    let url = window.location.href.split("/")
+            //    let i = url.pop()
+            //    let j = {{doFind(allResult[i].resource[x], categorys,  x)}}
+            //    console.log(j)
+            //    {# if(j-1 < {{categorys.length}}) #}
+            //        window.location = url.join()+"/"+ doFind({{categorys[j].resource[x]}},{{allResult}},{{category[j]}})
+            //  })
+
+        </script>
+        
+        <script type="module" src="/scripts/monitor.js"></script>
 </body>
 </html> 

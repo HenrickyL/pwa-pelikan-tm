@@ -1,7 +1,7 @@
 import express from "express"
 import dataOp from './helpers/dataOp.js'
 import  {getNewTimestamp as Tm} from './helpers/timestamp.js'
-import  {searchByValue} from './helpers/funtionality.js'
+import  {searchByValue,sortbyId,doFind} from './helpers/funtionality.js'
 // import * as fs from 'fs'
 let dataset = null
 let endpoint = "http://portal.greenmilesoftware.com/get_resources_since"
@@ -23,6 +23,7 @@ var env = nunjucks.configure();
 env.addGlobal('Tm',Tm);
 env.addGlobal('parseInt',parseInt);
 env.addGlobal("searchByValue",searchByValue)
+env.addGlobal("doFind",doFind)
 
 
 
@@ -54,7 +55,11 @@ app.get("/search=:id?/:value?",(req,res)=>{
             if(id!='undefined'){
                 result = searchByValue(result,id)
                 console.log("busca")
-            } id = ''
+            } else{
+                id = ''
+                result = dataset
+            }
+            
             let variables= {
                 Tm:Tm,
                 search:id,
@@ -67,17 +72,21 @@ app.get("/search=:id?/:value?",(req,res)=>{
             return res.render("search.html",variables)//passar pelo motor do nunjucks
         }).catch((err)=>console.log(">>"+err))
     }else{
+        let founded = null 
         if(id!='undefined'){
-            dataset = searchByValue(dataset,id)
+            founded = searchByValue(dataset,id)
             console.log("busca")
-        } id = ''
+        } else{
+            id = ''
+            founded = dataset
+        }
         let variables= {
             Tm:Tm,
             search:id,
             parseInt:parseInt,
-            allResult:dataset,
+            allResult:founded,
             index: i, div: 20,
-            translations: dataset.slice(i,i+20)
+            translations: founded.slice(i,i+20)
         }
 
 
@@ -86,8 +95,9 @@ app.get("/search=:id?/:value?",(req,res)=>{
     
 })
 
-
 app.get("/monitor/filter=:id?/:value?",(req,res)=>{
+
+    // return res.render('monitor.html')
     let i = Number(req.params.value)
     let id = String(req.params.id)
     
@@ -95,15 +105,26 @@ app.get("/monitor/filter=:id?/:value?",(req,res)=>{
     if(dataset === null){
         dataOp.fetchData(endpoint,25000).then((result)=>{
             dataset = result    
+            let elements=null
             //search
             if(id!='undefined'){
-                console.log("filtro")
-            } id = ''
+                // console.log(result.slice(0,10))
+                let aux = sortbyId(result,'language_id')
+                result = aux[0]
+                elements = aux[1]
+                // console.log(test)
+            } else{
+                id=''
+                result = dataset
+                elements=0
+            }
             let variables= {
                 Tm:Tm,
                 search:id,
                 parseInt:parseInt,
                 allResult:result,
+                categorys:elements,
+                doFind:doFind,
                 index: i, div: 20,
                 translations: result.slice(i,i+20),
             }
@@ -111,13 +132,31 @@ app.get("/monitor/filter=:id?/:value?",(req,res)=>{
             return res.render("monitor.html",variables)//passar pelo motor do nunjucks
         }).catch((err)=>console.log(">>"+err))
     }else{
+        let filtered = null
+        let elements=null
+        //search
+        if(id!='undefined'){
+            // console.log(result.slice(0,10))
+            let aux = sortbyId(dataset,id)
+            filtered = aux[0]
+            elements = aux[1]
+            // console.log(test)
+        } else{
+            id=''
+            filtered = dataset
+            elements=0
+        }
+
+
         let variables= {
             Tm:Tm,
             search:id,
             parseInt:parseInt,
-            allResult:dataset,
+            allResult:filtered,
+            doFind:doFind,
+            categorys:elements,
             index: i, div: 20,
-            translations: dataset.slice(i,i+20)
+            translations: filtered.slice(i,i+20)
         }
 
 

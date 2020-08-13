@@ -48,18 +48,31 @@
                 <div class="card-lang">{{t.resource.language_id}}</div>
             </div>
             {% endfor %}
+        </details>
             <div class="position">
+                <div class="opaca"></div>
                 <div id="elements">
                     <span><b>{{parseInt(index/div)+1}}</b> de <b>{{parseInt(allResult.length/div)}}</b></span>
                     <button class="bt-back" value=0><</button>
                     <button class="bt-next" value=0 >></button>
                 </div>
+                <div class="opaca"></div>
                 
             </div>
-        </details>
 
 
-        <script type="module" src="/scripts/search.js"></script>
     </main>
+    <div class="bg">
+            <div class="loader"></div>
+            Loading Data...
+        </div>
+
+<script>
+    setTimeout(()=>{
+                let x = document.querySelector(".bg")
+                x.classList.add("hide")
+            },1000)
+</script>
+        <script type="module" src="/scripts/search.js"></script>
 </body>
 </html> 
