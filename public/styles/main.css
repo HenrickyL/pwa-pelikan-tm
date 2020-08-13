@@ -145,6 +145,7 @@ button.bt-options{
 }
 
 
+
 .view {
     /* Prefixes are needed for Safari and other WebKit-based browsers */
     transition: -webkit-transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
@@ -155,16 +156,18 @@ button.bt-options{
 /* Filter - statistics */
 
 .monitor-box{
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     width: 85%;
     border: 1px solid #80808077;
     background-color: white;
-    justify-content: space-between;
-    padding: 5px;
+    justify-content: center;
+    padding: 7px;
     border-radius: 8px;
     margin-bottom: 3vh;
     margin-top:7vh ;
+    align-items: flex-end;
+    
 }
 
 .monitor-box .filter-options{
@@ -203,7 +206,8 @@ button.bt-options{
     overflow: scroll;
     background-color: white;
     /* overflow-anchor: auto; */
-    max-height: 400px; 
+    max-height: 400px;
+    min-height: 100px;
 }
 .list-translations .ajuste{
     margin-bottom:7vh ;
@@ -281,6 +285,9 @@ button.bt-options{
     font-weight: bold;
     box-shadow: 1px 1px 5px gray;
 }
+.list-translations .translation:hover .title-translation{
+    background-color: var(--color-base);
+} 
 
 /* botões  de paginas*/
 .list-translations .position{
@@ -299,4 +306,63 @@ button.bt-options{
 }
 .list-translations .position button:hover{
     background-color: var(--color-pri-light);
+}
+
+
+/* //////////////////// */
+
+.field{
+    display: flex;
+    flex-direction: column;
+}
+.monitor-box input{
+    width: 50vw; 
+    max-width: 400px;
+}
+.monitor-box input,.bt-search{
+    border-radius: 8px;
+    border: 1px solid #000000cc;
+    padding: 1px;
+    text-align: center;
+    height:35px;
+}
+button.bt-search{
+    position: relative;
+    left: -15px;
+    width: 45px;
+    transition: 200ms;
+    background-color: var(--color-base);
+    box-shadow: 1px 1px 5px gray;
+    border-radius: 0 8px 8px 0;
+}
+
+button.bt-search:active{
+    background-color: var(--color-base-light);
+    box-shadow: 0px 0px 0px gray;
+    transform: translatex(3px);
+}
+
+.translation:hover .card-lang{
+    opacity: 0.9;
+}
+.card-lang{
+    opacity: 0.6;
+    position: relative;
+    left: 48%;
+    /* top: 55%; */
+    z-index: 2;
+    border-radius: 8px;
+    background-color: var(--color-especial);
+    color: white;
+    width: auto;
+    height: 3vw;
+    max-width: 40px;
+    max-height: 40px;
+    min-width: 25px;
+    min-height: 25px;
+    padding: 3px;
+    padding-top: 5px;
+    text-align: center;
+    align-items: center;   
+    box-shadow: 0px -5px 0px yellow;
 }

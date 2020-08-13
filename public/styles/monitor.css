@@ -15,3 +15,10 @@
 .list-translations .title-list h2{
     font-size: 1.2em;
 }
+
+.monitor-box{
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
