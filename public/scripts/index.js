@@ -28,18 +28,18 @@ function loadItems(){
 function activateButtons(){
 
     btMonitor.addEventListener("click",()=>{
-        bgLoad.classList.remove("hide")
         setTimeout(()=>{
             window.location = "/monitor/filter=language/0"
         },1000)
+        bgLoad.classList.remove("hide")
         
         
     })
     btSearch.addEventListener("click",()=>{
-        bgLoad.classList.remove("hide")
         setTimeout(()=>{
             window.location = "/search=/0"
         },1000)
+        bgLoad.classList.remove("hide")
        
     })
     setInterval(()=>{
