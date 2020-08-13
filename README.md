@@ -2,11 +2,11 @@
 [![PayPal.me](https://img.shields.io/badge/paypal-donate-119fde.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5EYBZRRUNZ7UA&currency_code=BRL&source=url)
 
 # Relatório de Progresso
-
+<div style="display:flex; flex-direction:row;">
 <img src="3_search.jpeg">
-<img src="1_home.jpeg">
-<img src="2_monitor.jpeg">
-
+<img src="1_home.jpeg" >
+<img src="2_monitor.jpeg" >
+</div>
 
 
 <hr>
