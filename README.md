@@ -3,9 +3,9 @@
 
 # Relatório de Progresso
 <div style="display:flex; flex-direction:row;">
-<img src="3_search.jpeg">
-<img src="1_home.jpeg" >
-<img src="2_monitor.jpeg" >
+<img src="3_search.jpeg" width="30vw">
+<img src="1_home.jpeg" width="30vw">
+<img src="2_monitor.jpeg" width="30vw">
 </div>
 
 
