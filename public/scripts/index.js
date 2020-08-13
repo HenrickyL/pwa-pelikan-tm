@@ -29,13 +29,18 @@ function activateButtons(){
 
     btMonitor.addEventListener("click",()=>{
         bgLoad.classList.remove("hide")
-        window.location = "/monitor/filter=language/0"
+        setTimeout(()=>{
+            window.location = "/monitor/filter=language/0"
+        },1000)
+        
         
     })
     btSearch.addEventListener("click",()=>{
         bgLoad.classList.remove("hide")
-
-        window.location = "/search=/0"
+        setTimeout(()=>{
+            window.location = "/search=/0"
+        },1000)
+       
     })
     setInterval(()=>{
         if(navigator.onLine){
