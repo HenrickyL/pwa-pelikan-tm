@@ -1,4 +1,6 @@
 // import {Cache, CacheStorage, caches} from 'cache-polyfill'
+const version = "1.0";
+const cacheName = `Pelikan-Tm-${version}`;
 const staticCacheName = 'site-static-v1';
 try {
   self.addEventListener('install', function(e) {
@@ -40,33 +42,23 @@ try {
 try {
   // activate event
   self.addEventListener('activate', evt => {
-    evt.waitUntil(
-      caches.keys().then(keys => {
-        return Promise.all(keys
-          .filter(key => key !== staticCacheName)
-          .map(key => caches.delete(key))
-        );
-      }).catch((err)=>{
-        console.log("error:"+err)
-      })
-    );
-  });
-  
+    event.waitUntil(self.clients.claim());
+  })
 } catch (error) {
   console.log("Error to activate SW : ",error)
 }
 
 try {
   // fetch event
-  self.addEventListener('fetch', evt => {
-    evt.respondWith(
-      caches.match(evt.request).then(cacheRes => {
-        return cacheRes || fetch(evt.request);
-      }).catch((err)=>{
-        console.log("error:"+err)
+  self.addEventListener('fetch', event => {
+    event.respondWith(
+      caches.open(cacheName)
+        .then(cache => cache.match(event.request, {ignoreSearch: true}))
+        .then(response => {
+        return response || fetch(event.request);
       })
     );
-  });  
+  });
 } catch (error) {
   console.log("Error to fetch SW : ",error)
 }
