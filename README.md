@@ -15,7 +15,7 @@
 
 **Problema:** Um empresário traduziu seu software para várias línguas ao atender seus inúmeros clientes internacionais. Ele gostaria de verificar se as traduções de porções do seu software estão corretas, usando seu smartphone durante as viagens.
 
-**Requisitos:**
+**Requisítos:**
 * Apresentar as traduções
 * Filtro de linguagens e modulos
 * Pesquisa por conteúdo
@@ -50,12 +50,11 @@
 * Trabalhar com os requisitos:
     - Pesquisa
     - filtrar dados
-
-
+* **Hospedado:* [Pelikan TM](https://pelikan-tm.herokuapp.com/)
 
 <hr>
 
-## Requisitos:
+## Para poder Testar:
 
 Para executar este projeto basta ter o **node.js**, **VScode** e um **navegador** (chromer). Além disto, algumas dependências são nescessárias.
 
