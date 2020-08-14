@@ -6,7 +6,7 @@ let result =null
 fetch.fetch
 let _link = "http://portal.greenmilesoftware.com/get_resources_since"
 
-async function fetchData( link=_link,_timeout=10000, _maxTimeout=30000){
+async function fetchData( link=_link,_timeout=10000, _maxTimeout=50000){
     try{
         let init = {
             method: "GET",
@@ -23,7 +23,7 @@ async function fetchData( link=_link,_timeout=10000, _maxTimeout=30000){
         return json
     }catch(err){
         console.log(err)
-        // if(_timeout <= _maxTimeout)
+        if(_timeout <= _maxTimeout)
             fetchData(link,parseInt(_timeout*1.5),_maxTimeout)
     }
 }

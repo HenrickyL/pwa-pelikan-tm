@@ -50,7 +50,7 @@
 * Trabalhar com os requisitos:
     - Pesquisa
     - filtrar dados
-* **Hospedado:* [Pelikan TM](https://pelikan-tm.herokuapp.com/)
+* **Hospedado:** [Pelikan TM](https://pelikan-tm.herokuapp.com/)
 
 <hr>
 
