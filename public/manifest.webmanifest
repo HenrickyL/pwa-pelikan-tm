@@ -5,7 +5,7 @@
     "scope": "/",
     "display": "standalone",
     "orientation": "any",
-    "background_color": "#f4faf4",
+    "background_color": "#45046a",
     "theme_color": "#3AB556",
     "start_url": "/",
     "lang": "Portuguese",
@@ -13,7 +13,7 @@
         {
         
             "src": "./img/Pelikan-color.png",
-            "sizes": "144x144",
+            "sizes": "200x200",
             "type": "image/pgn"
         }
     ]
